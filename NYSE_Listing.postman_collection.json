@@ -1155,6 +1155,25 @@
 				},
 				{
 					"name": "POST FilterNoResults",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "688149b6-4d5b-4a43-ba6f-cda0ee9b3a1b",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"No results are returned\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.length).to.eql(0);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [
